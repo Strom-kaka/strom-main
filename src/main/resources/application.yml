@@ -1,0 +1,13 @@
+
+spring:
+  profiles:
+    active: dev
+  jackson:
+    generator:
+      write_numbers_as_strings: true
+mybatis:
+  type-aliases-package: com.zity.entity
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-locations: classpath:mybatis/mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true

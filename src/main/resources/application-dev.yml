@@ -1,0 +1,45 @@
+server:
+  port: 9024
+spring:
+  application:
+    name: digital-marketing-verification-test
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-2zezb9t4eu96n6o8bo.mysql.rds.aliyuncs.com:3306/precious-metal-db-test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: marketing_core
+    password: Ziteng@MarketingCore2017
+#springcloud配置
+eureka:
+  client:
+    initial-instance-info-replication-interval-seconds: 0
+    instance-info-replication-interval-seconds: 1
+    registry-fetch-interval-seconds: 1
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+#      defaultZone: http://${marketing.username}:${marketing.password}@114.115.255.228:8000/eureka/
+      defaultZone: http://${option.eureka.username}:${option.eureka.password}@192.168.1.191:8761/eureka/,http:${option.eureka.username}:${option.eureka.password}@192.168.1.245:8761/eureka/
+  instance:
+      lease-renewal-interval-in-seconds: 5
+      lease-expiration-duration-in-seconds: 5
+      prefer-ip-address: true
+#      metadata-map:
+#        cluster: MAIN
+
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        host: ""
+
+option:
+  swagger:
+    path: "/"
+    title: "接口文档"
+  eureka:
+    username: zity
+    password: zity2019
+  app:
+    prefix: ""
+    http: http://127.0.0.1:${server.port}
