@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>拉的翼神龙</title>
+    <link rel="stylesheet" type="text/css" th:href="@{${prefix} + '/common/layui/css/layui.css'}"/>
 </head>
 <body>
-    <h1>首页</h1>
+<ul class="layui-nav" lay-filter="" style="position: fixed;left: 0;top: 0;z-index: 10;opacity: 0.8;width: 100%">
+    <li class="layui-nav-item"><a href="">最新活动</a></li>
+    <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+    <li class="layui-nav-item"><a href="">大数据</a></li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">解决方案</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="">移动模块</a></dd>
+            <dd><a href="">后台模版</a></dd>
+            <dd><a href="">电商平台</a></dd>
+        </dl>
+    </li>
+    <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
+
+<div class="layui-carousel" id="carouselBox">
+    <div carousel-item>
+        <div><img th:src="@{${prefix} + '/pc/img/index/banner1.jpg'}" style="display: block;width: 100%;height: 100%;"></div>
+        <div><img th:src="@{${prefix} + '/pc/img/index/banner2.jpg'}" style="display: block;width: 100%;height: 100%;"></div>
+        <div><img th:src="@{${prefix} + '/pc/img/index/banner3.jpg'}" style="display: block;width: 100%;height: 100%;"></div>
+    </div>
+</div>
+
+    <script th:src="@{${prefix} + '/common/layui/layui.js'}"></script>
+    <script>
+        
+        window.onload = function () {
+            resetImgSize(calculateHeight());
+        }
+
+        function calculateHeight() {
+            var w = window.document.body.offsetWidth;
+            return (w * 8 / 16) + 'px' ;
+        }
+        
+        function resetImgSize(height) {
+            layui.use('carousel', function(){
+                var carousel = layui.carousel;
+                //建造实例
+                carousel.render({
+                    elem: '#carouselBox'
+                    ,width: '100%' //设置容器宽度
+                    ,height: height //设置容器宽度
+                    ,arrow: 'hover' //始终显示箭头
+                    //,anim: 'updown' //切换动画方式
+                });
+            });
+        }
+        
+    </script>
 </body>
 </html>

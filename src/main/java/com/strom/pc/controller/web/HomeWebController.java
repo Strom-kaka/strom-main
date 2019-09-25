@@ -14,7 +14,7 @@ public class HomeWebController extends BaseController {
     public String home(Model model){
         model.addAttribute("prefix",appPrefix);
 
-        return "index";
+        return "pc/index";
     }
 
 
